@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+  nodered:
+    image: nodered/node-red:3.0.2-18
+    # network_mode: host
+    extra_hosts:
+      - "APSERVER.local:192.168.1.80"
+    volumes:
+      - ./data:/data
+    ports:
+      - '1880:1880'
+    environment:
+      NODE_ENV: 'dev'

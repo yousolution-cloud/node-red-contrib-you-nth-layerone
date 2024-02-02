@@ -1,0 +1,80 @@
+<script type="text/javascript">
+  RED.nodes.registerType('document',{
+    category: 'LayerOne',
+    color: '#139ce9',
+    defaults: {
+      name: {value: ''},
+     // propDocument : {value: ''},
+      typeReq : {value: ''},
+      objdt : { value : ''},
+      fb : {value: ''},
+    },
+    inputs:1,
+    outputs:1,
+    icon: 'font-awesome/fa-file-text',
+    label: function() {
+      return this.name||"LayerOne document";
+    },
+
+    oneditprepare: function() {
+      $("#node-input-objdt").typedInput({type:"string", types:[{
+          value: "objectDocType",
+          default:"Quotations",
+          options: [
+            { value: "Quotations", label: "Quotations"},
+            { value: "Orders", label: "Orders"},
+            { value: "DeliveryNotes", label: "DeliveryNotes"},
+            { value: "Returns", label: "Returns"},
+            { value: "Invoices", label: "Invoices"},
+            { value: "CreditNotes", label: "CreditNotes"},
+            { value: "PurchaseOrders", label: "PurchaseOrders"},
+            { value: "PurchaseDeliveryNotes", label: "PurchaseDeliveryNotes"},
+            { value: "PurchaseReturns", label: "PurchaseReturns"},
+            { value: "PurchaseInvoices", label: "PurchaseInvoices"},
+            { value: "PurchaseCreditNotes", label: "PurchaseCreditNotes"},
+            { value: "Draft", label: "Draft"}
+          ]
+        }]});
+
+      $("#node-input-typeReq").typedInput({type:"string", types:[{
+          value: "action",
+          default:"ADD",
+          options: [
+            { value: "ADD", label: "ADD Document"},
+            { value: "UPDATE", label: "UPDATE Document"},
+            { value: "CLOSE", label: "CLOSE Document"},
+            { value: "CANCEL", label: "CANCEL Document"},
+          ]
+        }]});
+    }
+  });
+</script>
+
+<script type="text/html" data-template-name="document">
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name">
+  </div>
+
+  <div class="form-row">
+    <label for="node-input-typeReq"><i class="fa fa-cogs"></i> Action</label>
+    <input type="text" id="node-input-typeReq">
+  </div>
+  <div class="form-row">
+    <label for="node-input-objdt"><i class="fa fa-cogs"></i> Document</label>
+    <input type="text" id="node-input-objdt">
+  </div>
+
+  <div class="form-row">
+    <label for="node-input-fb"><i class="fa fa-tag"></i> From Build Node?</label>
+    <select name="node-input-fb" id="node-input-fb">
+      <option value="true">Yes</option>
+      <option value="false" selected>No</option>
+    </select>
+  </div>
+</script>
+
+<script type="text/html" data-help-name="document">
+  <p>A simple node for manage document</p>
+  <p>get objet on payload end test props for execution request</p>
+</script>

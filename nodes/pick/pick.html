@@ -1,0 +1,27 @@
+<script type="text/javascript">
+  RED.nodes.registerType('pick',{
+    category: 'LayerOne',
+    color: '#139ce9',
+    defaults: {
+      name: {value: ''},
+    },
+    inputs:1,
+    outputs:1,
+    icon: 'font-awesome/fa-shopping-basket',
+    label: function() {
+      return this.name||"LayerOne Pick";
+    },
+  });
+</script>
+
+<script type="text/html" data-template-name="pick">
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name">
+  </div>
+</script>
+
+<script type="text/html" data-help-name="pick">
+  <p>A simple node for Update PickList</p>
+  <p>get objet on payload end test props for execution request</p>
+</script>
