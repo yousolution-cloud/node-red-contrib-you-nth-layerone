@@ -247,7 +247,13 @@ function generateRequest(node, msg, config, options) {
     }
 
     if (thickIdApi.includes(entity) || config.entity === 'UDT') {
-      url = `${protocol}://${host}:${port}/LayerOne/servicelayer_service/${entity}('${entityId}')`;
+      if(Number.isInteger(entityId)) {
+        url = `${protocol}://${host}:${port}/LayerOne/servicelayer_service/${entity}(${entityId})`;
+      }
+      else {
+        url = `${protocol}://${host}:${port}/LayerOne/servicelayer_service/${entity}('${entityId}')`;
+      }
+      
     } else {
       url = `${protocol}://${host}:${port}/LayerOne/servicelayer_service/${entity}(${entityId})`;
     }

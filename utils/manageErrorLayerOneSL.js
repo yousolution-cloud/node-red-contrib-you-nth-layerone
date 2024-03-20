@@ -2,7 +2,7 @@
 
 
 function VerifyErrorLayerOneSL (node, msg, response, consentEmpty=false) {
-    if (!response.hasOwnProperty("success") && !response.hasOwnProperty("error") && !response.hasOwnProperty('@odata.context') && !consentEmpty) {  // Error Generic
+    if (!response.hasOwnProperty("success") && !response.hasOwnProperty("error") && !Object.keys(response).length && !consentEmpty) {  // Error Generic
         msg.payload = response;
         node.error('Not Valid LayerOne Requests', msg)
         node.status({ fill: 'red', shape: 'dot', text: 'Not Valid LayerOne Requests' });
@@ -22,9 +22,16 @@ function VerifyErrorLayerOneSL (node, msg, response, consentEmpty=false) {
     }
     else if(response.hasOwnProperty("error")){ //Error ServiceLayer
         if(response.error.hasOwnProperty('message')){
-            msg.payload = response;
-            node.error(response.error.message , msg)
-            node.status({ fill: 'red', shape: 'dot', text: response.error.message });
+            if(response.error.message.hasOwnProperty('value')) {
+                msg.payload = response;
+                node.error(response.error.message.value, msg)
+                node.status({ fill: 'red', shape: 'dot', text: response.error.message.value });
+            }
+            else {
+                msg.payload = response;
+                node.error(response.error.message , msg)
+                node.status({ fill: 'red', shape: 'dot', text: response.error.message });
+            }
         }
         else {
             msg.payload = response;
