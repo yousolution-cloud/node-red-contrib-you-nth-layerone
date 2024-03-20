@@ -1,0 +1,95 @@
+<script type="text/javascript">
+  RED.nodes.registerType('getObject',{
+    category: 'LayerOne',
+    color: '#139ce9',
+    defaults: {
+      name: {value: ''},
+      typeGettingObject : {value: ''},
+      entryKey : {value: ''},
+      typeEntryKey : {value: ''}
+    },
+    inputs:1,
+    outputs:1,
+    icon: 'font-awesome/fa-neuter',
+    label: function() {
+      return this.name||"LayerOne getObject";
+    },
+    oneditprepare: function() {
+
+      // $("#node-input-objdt").typedInput({type:"string", types:[{
+      //     value: "typeGettingObject",
+      //     default:"Quotations",
+      //     options: [
+      //       { value: "Quotations", label: "Quotations"},
+      //       { value: "Orders", label: "Orders"},
+      //       { value: "DeliveryNotes", label: "DeliveryNotes"},
+      //       { value: "Returns", label: "Returns"},
+      //       { value: "Invoices", label: "Invoices"},
+      //       { value: "CreditNotes", label: "CreditNotes"},
+      //       { value: "PurchaseOrders", label: "PurchaseOrders"},
+      //       { value: "PurchaseDeliveryNotes", label: "PurchaseDeliveryNotes"},
+      //       { value: "PurchaseReturns", label: "PurchaseReturns"},
+      //       { value: "PurchaseInvoices", label: "PurchaseInvoices"},
+      //       { value: "PurchaseCreditNotes", label: "PurchaseCreditNotes"},
+      //       { value: "Draft", label: "Draft"}
+      //     ]
+      //   }]});
+
+
+      $("#node-input-typeGettingObject").typedInput({type:"string", types:[{
+          value: "typeGettingObject",
+          default:"Orders",
+          options: [
+            { value: "bussinesPartner", label: "bussinesPartner"},
+            { value: "item", label: "item"},
+            { value: "Quotations", label: "Quotations"},
+            { value: "Orders", label: "Orders"},
+            { value: "DeliveryNotes", label: "DeliveryNotes"},
+            { value: "ReturnRequest", label: "ReturnRequest"},
+            { value: "Returns", label: "Returns"},
+            { value: "Invoices", label: "Invoices"},
+            { value: "CreditNotes", label: "CreditNotes"},
+            { value: "PurchaseRequest", label: "PurchaseRequest"},
+            { value: "PurchaseQuotations", label: "PurchaseQuotations"},
+            { value: "PurchaseOrders", label: "PurchaseOrders"},
+            { value: "PurchaseDeliveryNotes", label: "PurchaseDeliveryNotes"},
+            { value: "PurchaseReturns", label: "PurchaseReturns"},
+            { value: "PurchaseInvoices", label: "PurchaseInvoices"},
+            { value: "PurchaseCreditNotes", label: "PurchaseCreditNotes"},
+            { value: "InventoryGenExit", label: "InventoryGenExit"},
+            { value: "InventoryGenEntry", label: "InventoryGenEntry"},
+            { value: "Draft", label: "Draft"}
+          ]
+        }]});
+
+      $("#node-input-entryKey").typedInput({
+        value : "typeEntryKey",
+        default:"str",
+        types:["msg", "str"],
+        typeField: "#node-input-typeEntryKey"
+      });
+    }
+  });
+</script>
+
+<script type="text/html" data-template-name="getObject">
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name">
+  </div>
+
+  <div class="form-row">
+    <label for="node-input-typeGettingObject"><i class="fa fa-cogs"></i> Document</label>
+    <input type="text" id="node-input-typeGettingObject">
+  </div>
+
+  <div class="form-row">
+    <label for="node-input-entryKey"><i class="fa fa-tag"></i> EntryKey </label>
+    <input type="text" id="node-input-entryKey" placeholder="0000">
+    <input type="hidden" id="node-input-typeEntryKey">
+  </div>
+</script>
+
+<script type="text/html" data-help-name="getObject">
+  <p>A simple node that request a Object Data</p>
+</script>

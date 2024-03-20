@@ -1,0 +1,35 @@
+<script type="text/javascript">
+  RED.nodes.registerType('stockTransfer',{
+    category: 'LayerOne',
+    color: '#139ce9',
+    defaults: {
+      name: {value: ''},
+      isRequest : {value: false}
+    },
+    inputs:1,
+    outputs:1,
+    icon: 'font-awesome/fa-archive',
+    label: function() {
+      return this.name||"LayerOne StockTransfer";
+    },
+  });
+</script>
+
+<script type="text/html" data-template-name="stockTransfer">
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-isRequest"><i class="fa fa-tag"></i> It's Request?</label>
+    <select name="node-input-isRequest" id="node-input-isRequest">
+      <option value="true">Yes</option>
+      <option value="false" selected>No</option>
+    </select>
+  </div>
+</script>
+
+<script type="text/html" data-help-name="stockTransfer">
+  <p>A simple node for Add stock_transfer and stock_transfer_reuqest</p>
+  <p>get objet on payload end test props for execution request</p>
+</script>

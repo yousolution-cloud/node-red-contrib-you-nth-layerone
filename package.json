@@ -1,0 +1,71 @@
+{
+  "name": "@yousolution/node-red-contrib-you-nth-layerone",
+  "version": "0.0.4",
+  "description": "NodeRed library node for connection to LayerOne ",
+  "author": "Alessio Pellizzaro <alessio.pellizzaro@innotech.email>",
+  "license": "MPL-2.0",
+  "scripts": {
+    "test": "node test/app.js",
+    "update": "npm pack && copy yousolution-node-red-contrib-you-nth-layerone-%npm_package_version%.tgz .\\data\\ && cd .\\data\\ && npm i yousolution-node-red-contrib-you-nth-layerone-%npm_package_version%.tgz && docker-compose restart"
+  },
+  "keywords": [
+    "node-red",
+    "LayerOne",
+    "NTH",
+    "service layer",
+    "API",
+    "ERP",
+    "integration",
+    "youSolution.Cloud"
+  ],
+  "node-red": {
+    "version": ">=2.0.0",
+    "nodes": {
+      "authenticate": "/nodes/auth/authenticate.js",
+      "logout": "/nodes/logout/logout.js",
+      "query": "/nodes/query/query.js",
+      "company": "/nodes/company/company.js",
+      "companyInfo": "/nodes/companyInfo/companyInfo.js",
+      "companyAdminInfo": "/nodes/companyAdminInfo/companyAdminInfo.js",
+      "document": "/nodes/document/document.js",
+      "getObject": "/nodes/getObject/getObject.js",
+      "bussinessPartner": "/nodes/businessPartner/businessPartner.js",
+      "item": "/nodes/item/item.js",
+      "pick": "/nodes/pick/pick.js",
+      "stockTransfer": "/nodes/stocktransfer/stocktransfer.js",
+      "authenticateSap": "/nodes/sapservicelayer/authenticateSap.js",
+      "listSap": "/nodes/sapservicelayer/listSap.js",
+      "createSap": "/nodes/sapservicelayer/createSap.js",
+      "deleteSap": "/nodes/sapservicelayer/deleteSap.js",
+      "getSap": "/nodes/sapservicelayer/getSap.js",
+      "patchSap": "/nodes/sapservicelayer/patchSap.js",
+      "closeSap": "/nodes/sapservicelayer/closeSap.js",
+      "crossJoinSap": "/nodes/sapservicelayer/crossJoinSap.js",
+      "nextLink": "/nodes/sapservicelayer/nextLink.js",
+      "serviceSap": "/nodes/sapservicelayer/serviceSap.js",
+      "manipulateEntitySap": "/nodes/sapservicelayer/manipulateEntitySap.js",
+      "createSQLQuery": "/nodes/sapservicelayer/createSQLQuery.js",
+      "SQLQuery": "/nodes/sapservicelayer/SQLQuery.js"
+    }
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yousolution-cloud/node-red-contrib-you-nth-layerone.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@types/node-red-node-test-helper": "^0.2.2",
+    "node-red": "^3.0.2",
+    "node-red-node-test-helper": "^0.3.0"
+  },
+  "dependencies": {
+    "axios": "^1.2.2",
+    "odata-query": "^7.0.4",
+    "xml-js": "^1.6.11"
+  }
+}

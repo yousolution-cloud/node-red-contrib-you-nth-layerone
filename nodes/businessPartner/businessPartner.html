@@ -1,0 +1,60 @@
+<script type="text/javascript">
+  RED.nodes.registerType('businessPartner',{
+    category: 'LayerOne',
+    color: '#139ce9',
+    defaults: {
+      name: {value: ''},
+      typeReq : {value: ''},
+    },
+    inputs:1,
+    outputs:1,
+    icon: 'font-awesome/fa-address-card',
+    label: function() {
+      return this.name||"LayerOne businessPartner";
+    },
+    oneditprepare: function() {
+      $("#node-input-typeReq").typedInput({type:"string", types:[{
+          value: "action",
+          default:"ADD",
+          options: [
+            { value: "ADD", label: "ADD BP"},
+            { value: "UPDATE", label: "UPDATE BP"},
+            { value: "REMOVE", label: "REMOVE BP"}
+          ]
+        }]});
+    }
+  });
+</script>
+
+<script type="text/html" data-template-name="businessPartner">
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-typeReq"><i class="fa fa-cogs"></i> Action</label>
+    <input type="text" id="node-input-typeReq">
+  </div>
+</script>
+
+<script type="text/html" data-help-name="businessPartner">
+  <p>A simple node that request a businessPartner </p>
+  <p> the Avaible Actions it's "ADD" - "UPDATE" - "REMOVE"</p>
+  <p>Read Of Data on Payload</p>
+  <code> 
+    // Example Payload
+    CardCode: 'C27000',
+        businesspartner: {
+            fields: {
+                "CardCode": "C27000",
+                "CardType": "C",
+                "CardName": "ECOTEST",
+                "CardForeignName": "ECOTEST,
+                "FreeText": "ECOTEST",
+                "FederalTaxID": "IT01160260111",
+                "UnifiedFederalTaxID": "SK7676487710",
+                "AdditionalID": "RO01160260111"
+            }
+        },
+  </code>
+</script>

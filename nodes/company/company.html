@@ -1,0 +1,26 @@
+<script type="text/javascript">
+  RED.nodes.registerType('company',{
+    category: 'LayerOne',
+    color: '#139ce9',
+    defaults: {
+      name: {value: ''},
+    },
+    inputs:1,
+    outputs:1,
+    icon: 'font-awesome/fa-briefcase',
+    label: function() {
+      return this.name||"LayerOne company";
+    }
+  });
+</script>
+
+<script type="text/html" data-template-name="company">
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name">
+  </div>
+</script>
+
+<script type="text/html" data-help-name="company">
+  <p>A simple node that request a company file</p>
+</script>

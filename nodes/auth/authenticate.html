@@ -1,0 +1,127 @@
+<script type="text/javascript">
+  RED.nodes.registerType('authenticate',{
+    category: 'LayerOne',
+    color: '#139ce9',
+    defaults: {
+      name: {value: ''},
+      host: {value: ''},
+      port: {value: ''},
+      protocol: {value: ''}
+    },
+    credentials: {
+      company: {type: "string"},
+      companyType: {type: 'string'},
+      user: {type:"string"},
+      userType: {type: 'string'},
+      password: {type:"password"}
+    },
+    inputs:1,
+    outputs:1,
+    icon: 'font-awesome/fa-lock',
+    label: function() {
+      return this.name||"LayerOne Authenticate";
+    },
+    oneditprepare: function() {
+      $("#node-input-company").typedInput({
+        default:"msg",
+        types:["msg", "str"],
+        typeField: "#node-input-companyType"
+      });
+
+      $("#node-input-user").typedInput({
+        default:"msg",
+        types:["msg", "str"],
+        typeField: "#node-input-userType"
+      });
+    }
+  });
+</script>
+
+<script type="text/html" data-template-name="authenticate">
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name">
+  </div>
+
+  <div class="form-row">
+    <label for="node-input-host"><i class="fa fa-cogs"></i> Host</label>
+    <input type="text" id="node-input-host" placeholder="Host">
+  </div>
+
+  <div class="form-row">
+    <label for="node-input-port"><i class="fa fa-cogs"></i> Port</label>
+    <input type="text" id="node-input-port" placeholder="Port">
+  </div>
+
+  <div class="form-row">
+    <label for="node-input-protocol"><i class="fa fa-cogs"></i> Protocol</label>
+    <input type="text" id="node-input-protocol" placeholder="Protocol">
+  </div>
+
+  <div class="form-row">
+    <label for="node-input-company"><i class="fa fa-tag"></i> Company</label>
+    <input type="text" id="node-input-company" placeholder="company">
+    <input type="hidden" id="node-input-companyType">
+  </div>
+
+  <div class="form-row">
+    <label for="node-input-user"><i class="fa fa-tag"></i> User</label>
+    <input type="text" id="node-input-user" placeholder="user">
+    <input type="hidden" id="node-input-userType">
+  </div>
+
+  <div class="form-row">
+    <label for="node-input-password"><i class="fa fa-lock"></i> Password</label>
+    <input type="password" id="node-input-password" placeholder="password">
+  </div>
+</script>
+
+
+<!-- Documentation -->
+<script type="text/html" data-help-name="authenticate">
+  <p>Authenticate action</p>
+
+  <h3>Inputs</h3>
+  <dl class="message-properties">
+    <dt>Name
+      <span class="property-type">string</span>
+    </dt>
+    <dd> the node's name </dd>
+    <dt>Host
+      <span class="property-type">string</span>
+    </dt>
+    <dd> LayerOne Host </dd>
+    <dt>Port
+      <span class="property-type">number</span>
+    </dt>
+    <dd> LayerOne Host Port </dd>
+    <dt>Protocol
+      <span class="property-type">string</span>
+    </dt>
+    <dd> LayerOne Host Protocal </dd>
+    <dt>Company
+      <span class="property-type">string</span>
+    </dt>
+    <dd> Company's name to connect </dd>
+    <dt>User
+      <span class="property-type">string</span>
+    </dt>
+    <dd>Username to connect to the company's database </dd>
+    <dt>Password
+      <span class="property-type">string</span>
+    </dt>
+    <dd>Password to connect to the company's database </dd>
+
+  </dl>
+
+  <h3>Outputs</h3>
+  <ol class="node-ports">
+    <li>Standard output
+      <dl class="message-properties">
+        <dt>payload <span class="property-type">string</span></dt>
+        <dd>the standard output of the command.</dd>
+      </dl>
+    </li>
+  </ol>
+
+</script>
