@@ -23,7 +23,7 @@ module.exports = function (RED) {
         const options = { method: 'POST', hasRawQuery: false, data: data };
         const login = Support.login;
         const result = await Support.sendRequest({ node, msg, config, axios, login, options });
-        msg.payload = VerifyErrorLayerOneSL(node, msg, result);
+        msg.payload = VerifyErrorLayerOneSL(node, msg, result.data);
         msg.statusCode = result.status;
         if(msg.payload) {
           node.status({ fill: 'green', shape: 'dot', text: 'success' });
