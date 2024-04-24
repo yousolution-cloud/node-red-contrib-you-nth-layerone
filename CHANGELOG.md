@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+# [0.0.5] - 2024-04-24
+
+### BugFix
+-  We have updated the result handling in CROSSJOIN Request
+
+### Add Function
+
+-  We Add Service "OrdersService_Preview" on SERVICE
+
 # [0.0.4] - 2024-03-20
 
 ### BugFix

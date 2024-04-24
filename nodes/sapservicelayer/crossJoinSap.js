@@ -19,7 +19,7 @@ module.exports = function (RED) {
         const options = { method: 'GET', hasRawQuery: true, hasEntityId: false, isCrossJoin: true };
         const login = Support.login;
         const result = await Support.sendRequest({ node, msg, config, axios, login, options });
-        msg.payload = VerifyErrorLayerOneSL(result.data);
+        msg.payload = VerifyErrorLayerOneSL(node, msg, result.data);
         msg.statusCode = result.status;
         msg.nextLink = result.data['odata.nextLink'] || result.data['@odata.nextLink'];
         if(msg.payload) {
