@@ -7,6 +7,7 @@ const thickIdApi = [
   'AssetClasses',
   'AssetDepreciationGroups',
   'AssetGroups',
+  'AlternateCatNum',
   'BankChargesAllocationCodes',
   'BusinessPartners',
   'CampaignResponseType',
