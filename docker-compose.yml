@@ -1,14 +1,17 @@
-version: '3.8'
+#version: '3.8'
 
 services:
   nodered:
-    image: nodered/node-red:3.0.2-18
+    image: nodered/node-red:3.1.0
     # network_mode: host
     extra_hosts:
       - "APSERVER.local:192.168.1.80"
     volumes:
       - ./data:/data
+      # - layerOneData:/data
     ports:
       - '1880:1880'
     environment:
       NODE_ENV: 'dev'
+# volumes:
+#   layerOneData:

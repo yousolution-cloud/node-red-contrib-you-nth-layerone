@@ -30,6 +30,12 @@ module.exports = function (RED) {
       // If Company setted from msg
       if (node.credentials.companyType == 'msg') {
         const company = msg[node.credentials.company];
+        let currentCompany = globalContext.get(`_YOU_LY1_${node.id}.credentials.CompanyDB`);
+
+        if(company !== currentCompany) {
+          globalContext.set(`_YOU_LY1_${node.id}.headers`, null);
+        }
+
         globalContext.set(`_YOU_LY1_${node.id}.credentials.CompanyDB`, company);
       }
 

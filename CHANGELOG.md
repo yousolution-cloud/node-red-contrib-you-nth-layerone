@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+# [0.0.6] - 2024-05-08
+
+### BugFix
+-  We have updated the manage dynamic login on AUTH Request
+
 # [0.0.5] - 2024-04-24
 
 ### BugFix
