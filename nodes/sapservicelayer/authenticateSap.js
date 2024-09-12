@@ -22,11 +22,22 @@ module.exports = function (RED) {
       },
     });
 
-    if (!node.credentials.user || !node.credentials.password || !node.credentials.company) {
+    if (!node.credentials.user || !node.credentials.company) {
       node.status({ fill: 'gray', shape: 'ring', text: 'Missing credentials' });
     }
 
     node.on('input', async (msg, send, done) => {
+
+      if(!node.credentials.password && !msg.password){
+        node.status({ fill: 'gray', shape: 'ring', text: 'Missing credentials Password Code' });
+      }
+
+      if(msg.password){
+       // node.log(msg.password);
+        globalContext.set(`_YOU_LY1_${node.id}.credentials.Password`, msg.password);
+        node.credentials.password = msg.password;
+      }
+      
       // If Company setted from msg
       if (node.credentials.companyType == 'msg') {
         const company = msg[node.credentials.company];

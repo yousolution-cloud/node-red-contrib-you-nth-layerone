@@ -60,9 +60,6 @@ module.exports = function(RED) {
                 }
 
             }
-
-            //node.status({ fill: 'red', shape: 'ring', text: 'Missing credentials' });
-            //node.send(msg);
         });
     }
     RED.nodes.registerType("query",query);
