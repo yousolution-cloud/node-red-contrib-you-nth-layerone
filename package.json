@@ -1,6 +1,6 @@
 {
   "name": "@yousolution/node-red-contrib-you-nth-layerone",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "NodeRed library node for connection to LayerOne ",
   "author": "Alessio Pellizzaro <alessio.pellizzaro@innotech.email>",
   "license": "MPL-2.0",
