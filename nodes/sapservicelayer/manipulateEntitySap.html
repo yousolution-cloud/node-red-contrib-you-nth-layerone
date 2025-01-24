@@ -1,10 +1,10 @@
 <script type="text/javascript">
-  let entities = [];
-  let entitiesData = {};
+  let LY1entities = [];
+  let LY1entitiesData = {};
     $.getJSON('entities', (data, status) => {
       for(entity in data) {
-        entitiesData = data;
-        entities.push(entity);
+        LY1entitiesData = data;
+        LY1entities.push(entity);
       }
     });
   RED.nodes.registerType('manipulateEntityLayerOneSL',{
@@ -26,7 +26,7 @@
     },
     oneditprepare: function() {
 
-      entities.forEach((entity) => {
+      LY1entities.forEach((entity) => {
         $('#node-input-entity')
           .append($("<option></option>")
                       .attr("value", entity)
@@ -44,8 +44,8 @@
 
         $('#node-input-manipulateMethod').empty();
 
-        if(entitiesData[entity]) {
-          entitiesData[entity].forEach((endpoint) => {
+        if(LY1entitiesData[entity]) {
+          LY1entitiesData[entity].forEach((endpoint) => {
           $('#node-input-manipulateMethod')
             .append($("<option></option>")
                         .attr("value", endpoint)
